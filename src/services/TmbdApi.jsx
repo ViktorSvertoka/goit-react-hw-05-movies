@@ -1,11 +1,11 @@
 // Импортируем модуль axios для работы с HTTP-запросами
 import axios from 'axios';
 
+// Константа с API-ключом
+const API_KEY = '9a0701f2e35c588a9bcc5f999814db26';
+
 // Устанавливаем базовый URL для всех запросов
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-
-// Константа с API-ключом
-const API_KEY = '992758a4802a699e8df27d4d6efc34fb';
 
 // Функция для получения трендовых фильмов
 const fetchTrending = async () => {
