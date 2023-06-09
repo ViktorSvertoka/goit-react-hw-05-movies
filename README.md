@@ -64,3 +64,31 @@
 
 Додай асинхронне завантаження JS-коду для маршрутів застосунку, використовуючи
 `React.lazy()` і `Suspense`.
+
+---
+
+API key: '992758a4802a699e8df27d4d6efc34fb'
+
+---
+
+npm i axios
+
+import axios from 'axios'
+
+---
+
+npm install @emotion/react @emotion/styled
+
+import styled from '@emotion/styled'
+
+---
+
+npm i prop-types
+
+import PropTypes from 'prop-types'
+
+---
+
+npm i react-loader-spinner
+
+import { BallTriangle } from 'react-loader-spinner'
