@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import api from '..//../services/TmbdApi';
+import { fetchSearchByKeyword } from '..//../services/TmbdApi';
 import Loader from '..//../components/Loader/Loader';
 import EditorList from '..//../components/EditorList/EditorList';
 
@@ -21,7 +21,7 @@ const MoviesPage = () => {
       const searchMovies = async () => {
         setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
         try {
-          const searchResults = await api.fetchSearchByKeyword(queryMovie); // Выполняем запрос на поиск фильмов по ключевому слову с использованием API-сервиса
+          const searchResults = await fetchSearchByKeyword(queryMovie); // Выполняем запрос на поиск фильмов по ключевому слову с использованием API-сервиса
           setSearchFilms(searchResults); // Устанавливаем полученные результаты поиска в состояние
           if (searchResults.length === 0) {
             setNoMoviesText(true);

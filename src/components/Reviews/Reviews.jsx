@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import api from '..//..//services/TmbdApi';
+import { fetchReviews } from '..//..//services/TmbdApi';
 import Loader from '../Loader/Loader';
 
 const Reviews = () => {
@@ -9,10 +9,10 @@ const Reviews = () => {
   const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
 
   useEffect(() => {
-    const fetchReviews = async () => {
+    const fetchReviewsFilms = async () => {
       setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
       try {
-        const reviews = await api.fetchReviews(movieId); // Выполняем запрос на получение отзывов с использованием API-сервиса
+        const reviews = await fetchReviews(movieId); // Выполняем запрос на получение отзывов с использованием API-сервиса
         setReviews(reviews); // Устанавливаем полученные отзывы в состояние
       } catch (error) {
         console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
@@ -20,7 +20,7 @@ const Reviews = () => {
         setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
       }
     };
-    fetchReviews(); // Вызываем функцию получения отзывов при каждом изменении параметра movieId
+    fetchReviewsFilms(); // Вызываем функцию получения отзывов при каждом изменении параметра movieId
   }, [movieId]);
 
   return (

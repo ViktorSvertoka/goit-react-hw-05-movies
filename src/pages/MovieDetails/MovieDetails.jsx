@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import api from '..//../services/TmbdApi';
+import { fetchMovieDetails } from '..//../services/TmbdApi';
 import Loader from '..//../components/Loader/Loader';
 import { Container, List } from './MovieDetails.styled';
 
@@ -11,10 +11,10 @@ const MovieDetailsPage = () => {
   const location = useLocation(); // Получение текущего местоположения (URL)
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const fetchMovieDetailsFilms = async () => {
       setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
       try {
-        const detailMovie = await api.fetchMovieDetails(movieId); // Выполняем запрос на получение подробной информации о фильме с использованием API-сервиса
+        const detailMovie = await fetchMovieDetails(movieId); // Выполняем запрос на получение подробной информации о фильме с использованием API-сервиса
         setMovieInfo(detailMovie); // Устанавливаем полученную информацию о фильме в состояние
       } catch (error) {
         console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
@@ -22,7 +22,7 @@ const MovieDetailsPage = () => {
         setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
       }
     };
-    fetchMovieDetails(); // Вызываем функцию получения информации о фильме при каждом изменении параметра movieId
+    fetchMovieDetailsFilms(); // Вызываем функцию получения информации о фильме при каждом изменении параметра movieId
   }, [movieId]);
 
   return (
