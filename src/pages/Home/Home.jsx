@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EditorList from '..//../components/EditorList/EditorList';
-import api from '..//../services/TmbdApi';
+import { fetchTrending } from '..//../services/TmbdApi';
 import Loader from '..//../components/Loader/Loader';
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
     const fetchTrendingFilms = async () => {
       setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
       try {
-        const trendingFilms = await api.fetchTrending(); // Выполняем запрос на получение популярных фильмов с использованием API-сервиса
+        const trendingFilms = await fetchTrending(); // Выполняем запрос на получение популярных фильмов с использованием API-сервиса
         setFilms(trendingFilms); // Устанавливаем полученные фильмы в состояние
       } catch (error) {
         console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль

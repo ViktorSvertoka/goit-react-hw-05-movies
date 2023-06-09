@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import api from '..//../services/TmbdApi';
+import { fetchActors } from '..//../services/TmbdApi';
 import Loader from '../Loader/Loader';
 
 const Cast = () => {
@@ -12,7 +12,7 @@ const Cast = () => {
     const onActorsOfMovie = async () => {
       setLoading(true); // Устанавливаем флаг загрузки в true
       try {
-        const actors = await api.fetchActors(movieId); // Выполняем запрос к API для получения актеров фильма
+        const actors = await fetchActors(movieId); // Выполняем запрос к API для получения актеров фильма
         setActors(actors); // Обновляем состояние актеров с полученными данными
       } catch (error) {
         console.log(error); // Обрабатываем ошибку, если произошла
