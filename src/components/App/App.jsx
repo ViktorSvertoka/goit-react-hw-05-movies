@@ -37,10 +37,10 @@ const App = () => {
           <Route path="/" element={<Home />} />
 
           {/* Маршрут для страницы с фильмами */}
-          <Route path="movies" element={<Movies />} />
+          <Route path="/movies" element={<Movies />} />
 
           {/* Маршрут для страницы с подробной информацией о фильме */}
-          <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
             {/* Вложенные маршруты для страницы с подробной информацией о фильме */}
             <Route path="cast" element={<Cast />} />{' '}
             {/* Маршрут для страницы с актерским составом фильма */}
