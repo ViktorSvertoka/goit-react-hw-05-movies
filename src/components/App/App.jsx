@@ -1,11 +1,6 @@
 import { lazy, Suspense } from 'react';
-import {
-  Route,
-  Routes,
-  NavLink as NewNavLink,
-  Navigate,
-} from 'react-router-dom';
-import { Container, StyledNavLink } from './App.styled';
+import { Route, Routes, NavLink, Navigate } from 'react-router-dom';
+import { Container } from './App.styled';
 
 // Ленивая загрузка компонентов
 const Home = lazy(() => import('./../../pages/Home/Home')); // Компонент для домашней страницы
@@ -21,13 +16,9 @@ const App = () => {
     <Container>
       <nav>
         {/* Навигационные ссылки */}
-        <StyledNavLink as={NewNavLink} to="/">
-          Home
-        </StyledNavLink>
+        <NavLink to="/">Home</NavLink>
 
-        <StyledNavLink as={NewNavLink} to="/movies">
-          Movies
-        </StyledNavLink>
+        <NavLink to="/movies">Movies</NavLink>
 
         <hr />
       </nav>
