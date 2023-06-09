@@ -1,10 +1,5 @@
 import { lazy, Suspense } from 'react';
-import {
-  Route,
-  Routes,
-  NavLink as NewNavLink,
-  Navigate,
-} from 'react-router-dom';
+import { Route, Routes, NavLink as NewNavLink } from 'react-router-dom';
 import { Container, StyledNavLink } from './App.styled';
 
 // Ленивая загрузка компонентов
@@ -34,7 +29,7 @@ const App = () => {
       <Suspense fallback="loading">
         <Routes>
           {/* Маршрут для домашней страницы */}
-          <Route path="/" element={<Home />} />
+          <Route index path="/" element={<Home />} />
 
           {/* Маршрут для страницы с фильмами */}
           <Route path="/movies" element={<Movies />} />
@@ -49,7 +44,7 @@ const App = () => {
           </Route>
 
           {/* Маршрут для перенаправления на домашнюю страницу в случае неправильного адреса */}
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Home to="/" />} />
         </Routes>
       </Suspense>
     </Container>
