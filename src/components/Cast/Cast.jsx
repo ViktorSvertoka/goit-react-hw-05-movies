@@ -32,7 +32,11 @@ const Cast = () => {
           <li key={actor.id}>
             <img
               width="200px"
-              src={'https://image.tmdb.org/t/p/w500' + actor.profile_path} // Формирование URL изображения актера
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w500${actor.profile_path}` // Если у актера есть изображение, используем его URL
+                  : `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg` // Если у актера нет изображения, используем заглушку
+              }
               alt={actor.original_name}
             />
             <p>{actor.name}</p> {/* Отображение имени актера */}
