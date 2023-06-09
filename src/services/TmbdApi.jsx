@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Константа с API-ключом
-const API_KEY = '9a0701f2e35c588a9bcc5f999814db26';
+const API_KEY = '992758a4802a699e8df27d4d6efc34fb';
 
 // Устанавливаем базовый URL для всех запросов
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
