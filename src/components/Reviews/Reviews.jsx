@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchReviews } from '..//..//services/TmbdApi';
-import Loader from '../Loader/Loader';
+import { fetchReviews } from './../../services/TmbdApi';
+import Loader from './../Loader/Loader';
 
 const Reviews = () => {
   const { movieId } = useParams(); // Получение параметра movieId из URL с помощью хука useParams
