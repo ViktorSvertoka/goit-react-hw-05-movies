@@ -25,9 +25,19 @@ const MovieDetailsPage = () => {
     fetchMovieDetailsFilms(); // Вызываем функцию получения информации о фильме при каждом изменении параметра movieId
   }, [movieId]);
 
+  const {
+    title,
+    release_date,
+    popularity,
+    overview,
+    genres,
+    poster_path,
+    original_title,
+  } = movieInfo || {};
+
   return (
     <>
-      <Link to={location?.state?.from ?? '/movies'}>
+      <Link to={location.state?.from ?? '/'}>
         <button type="button">Go back</button>
       </Link>
       {loading && <Loader />}
@@ -36,19 +46,23 @@ const MovieDetailsPage = () => {
         <Container>
           <img
             width="300px"
-            src={'https://image.tmdb.org/t/p/w500' + movieInfo.poster_path}
-            alt={movieInfo.original_title}
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                : `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+            }
+            alt={original_title}
           />
           <div>
             <h1>
-              {movieInfo.title} ({movieInfo.release_date.slice(0, 4)})
+              {title} ({release_date.slice(0, 4)})
             </h1>
-            <p>User score: {movieInfo.popularity}</p>
+            <p>User score: {popularity}</p>
             <h2>Overview</h2>
-            <p>{movieInfo.overview}</p>
+            <p>{overview}</p>
             <h2>Genres</h2>
             <List>
-              {movieInfo.genres.map(genre => (
+              {genres.map(genre => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </List>
