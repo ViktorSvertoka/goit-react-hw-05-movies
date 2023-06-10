@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { fetchSearchByKeyword } from './../../services/TmbdApi';
-import Loader from './../../components/Loader/Loader';
-import EditorList from './../../components/EditorList/EditorList';
+import { fetchSearchByKeyword } from '..//../services/TmbdApi';
+import Loader from '..//../components/Loader/Loader';
+import EditorList from '..//../components/EditorList/EditorList';
 
 const MoviesPage = () => {
   const [searchFilms, setSearchFilms] = useState([]); // Состояние для хранения результатов поиска фильмов
