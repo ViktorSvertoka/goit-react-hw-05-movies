@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Route, Routes, NavLink as NewNavLink } from 'react-router-dom';
 import { Container, StyledNavLink } from './App.styled';
 
@@ -26,27 +26,27 @@ const App = () => {
 
         <hr />
       </nav>
-      <Suspense fallback="loading">
-        <Routes>
-          {/* Маршрут для домашней страницы */}
-          <Route index path="/" element={<Home />} />
+      {/* <Suspense fallback="loading"> */}
+      <Routes>
+        {/* Маршрут для домашней страницы */}
+        <Route index path="/" element={<Home />} />
 
-          {/* Маршрут для страницы с фильмами */}
-          <Route path="/movies" element={<Movies />} />
+        {/* Маршрут для страницы с фильмами */}
+        <Route path="/movies" element={<Movies />} />
 
-          {/* Маршрут для страницы с подробной информацией о фильме */}
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
-            {/* Вложенные маршруты для страницы с подробной информацией о фильме */}
-            <Route path="cast" element={<Cast />} />{' '}
-            {/* Маршрут для страницы с актерским составом фильма */}
-            <Route path="reviews" element={<Reviews />} />{' '}
-            {/* Маршрут для страницы с обзорами фильма */}
-          </Route>
+        {/* Маршрут для страницы с подробной информацией о фильме */}
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          {/* Вложенные маршруты для страницы с подробной информацией о фильме */}
+          <Route path="cast" element={<Cast />} />{' '}
+          {/* Маршрут для страницы с актерским составом фильма */}
+          <Route path="reviews" element={<Reviews />} />{' '}
+          {/* Маршрут для страницы с обзорами фильма */}
+        </Route>
 
-          {/* Маршрут для перенаправления на домашнюю страницу в случае неправильного адреса */}
-          <Route path="*" element={<Home to="/" />} />
-        </Routes>
-      </Suspense>
+        {/* Маршрут для перенаправления на домашнюю страницу в случае неправильного адреса */}
+        <Route path="*" element={<Home to="/" />} />
+      </Routes>
+      {/* </Suspense> */}
     </Container>
   );
 };
