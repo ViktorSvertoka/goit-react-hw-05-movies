@@ -11,6 +11,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   border-bottom: solid 1px grey;
+  margin-bottom: 20px;
 `;
 
 export const Link = styled(NavLink)`
