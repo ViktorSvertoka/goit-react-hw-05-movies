@@ -17,8 +17,12 @@ const App = () => {
     <>
       <Container>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <Link to="/" end>
+            Home
+          </Link>
+          <Link to="/movies" end>
+            Movies
+          </Link>
           <hr />
         </nav>
         <Suspense fallback={<Loader />}>
