@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import EditorList from './../../components/EditorList/EditorList';
-import { fetchTrending } from './../../services/TmbdApi';
-import Loader from './../../components/Loader/Loader';
+import EditorList from '..//../components/EditorList/EditorList';
+import { fetchTrending } from '..//../services/TmbdApi';
+import Loader from '..//../components/Loader/Loader';
 
 const HomePage = () => {
   const [films, setFilms] = useState([]); // Состояние для хранения списка фильмов
