@@ -5,25 +5,25 @@ import Loader from 'components/Loader/Loader';
 import EditorList from 'components/EditorList/EditorList';
 
 const MoviesPage = () => {
-  const [searchFilms, setSearchFilms] = useState([]); // Состояние для хранения результатов поиска фильмов
-  const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
-  const [searchParams, setSearchParams] = useSearchParams({}); // Хук для работы с параметрами URL
-  const queryMovie = searchParams.get('query'); // Получение значения параметра 'query' из URL
-  const [noMoviesText, setNoMoviesText] = useState(false); // Состояние для отображения текста "There is no movies with this request"
+  const [searchFilms, setSearchFilms] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const queryMovie = searchParams.get('query');
+  const [noMoviesText, setNoMoviesText] = useState(false);
 
   const handleSubmit = event => {
-    event.preventDefault(); // Предотвращение перезагрузки страницы при отправке формы
-    setSearchParams({ query: event.target.elements.query.value.toLowerCase() }); // Установка значения параметра 'query' в URL
+    event.preventDefault();
+    setSearchParams({ query: event.target.elements.query.value.toLowerCase() });
   };
 
   useEffect(() => {
     if (queryMovie) {
       const searchMovies = () => {
-        setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
+        setLoading(true);
 
         fetchSearchByKeyword(queryMovie)
           .then(searchResults => {
-            setSearchFilms(searchResults); // Устанавливаем полученные результаты поиска в состояние
+            setSearchFilms(searchResults);
             if (searchResults.length === 0) {
               setNoMoviesText(true);
             } else {
@@ -31,14 +31,14 @@ const MoviesPage = () => {
             }
           })
           .catch(error => {
-            console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+            console.log(error);
           })
           .finally(() => {
-            setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+            setLoading(false);
           });
       };
 
-      searchMovies(); // Вызываем функцию поиска фильмов при каждом изменении параметра 'query'
+      searchMovies();
     }
   }, [queryMovie]);
 

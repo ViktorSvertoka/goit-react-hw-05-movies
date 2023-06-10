@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const EditorList = ({ films }) => {
-  const location = useLocation(); // Получение текущего объекта useLocation из react-router-dom
+  const location = useLocation();
 
   return (
     <ul>

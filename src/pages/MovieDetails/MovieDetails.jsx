@@ -5,28 +5,28 @@ import Loader from 'components/Loader/Loader';
 import { Container, List } from './MovieDetails.styled';
 
 const MovieDetailsPage = () => {
-  const { movieId } = useParams(); // Получение параметра movieId из URL с помощью хука useParams
-  const [movieInfo, setMovieInfo] = useState(null); // Состояние для хранения информации о фильме
-  const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
-  const location = useLocation(); // Получение текущего местоположения (URL)
+  const { movieId } = useParams();
+  const [movieInfo, setMovieInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieDetailsFilms = () => {
-      setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
+      setLoading(true);
 
       fetchMovieDetails(movieId)
         .then(detailMovie => {
-          setMovieInfo(detailMovie); // Устанавливаем полученную информацию о фильме в состояние
+          setMovieInfo(detailMovie);
         })
         .catch(error => {
-          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+          console.log(error);
         })
         .finally(() => {
-          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+          setLoading(false);
         });
     };
 
-    fetchMovieDetailsFilms(); // Вызываем функцию получения информации о фильме при каждом изменении параметра movieId
+    fetchMovieDetailsFilms();
   }, [movieId]);
 
   const {
