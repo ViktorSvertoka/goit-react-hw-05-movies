@@ -22,7 +22,7 @@ const App = () => {
         </nav>
         <Suspense fallback="loading">
           <Routes>
-            <Route index path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/movies" element={<Movies />} />
 
