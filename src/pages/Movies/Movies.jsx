@@ -41,18 +41,17 @@ const MoviesPage = () => {
   return (
     <main>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query" autoFocus />{' '}
-        {/* Поле ввода для поискового запроса */}
-        <button type="submit">Search</button> {/* Кнопка отправки формы */}
+        <input type="text" name="query" autoFocus />
+
+        <button type="submit">Search</button>
       </form>
-      {loading && <Loader />}{' '}
-      {/* Отображение компонента загрузки во время выполнения запроса */}
+      {loading && <Loader />}
+
       {noMoviesText && (
         <p>There is no movies with this request. Please, try again</p>
       )}
-      {/* Отображение текста, если фильмы не найдены */}
-      {searchFilms && <EditorList films={searchFilms} />}{' '}
-      {/* Отображение списка найденных фильмов */}
+
+      {searchFilms && <EditorList films={searchFilms} />}
     </main>
   );
 };

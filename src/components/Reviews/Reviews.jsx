@@ -25,8 +25,7 @@ const Reviews = () => {
 
   return (
     <>
-      {loading && <Loader />}{' '}
-      {/* Отображение компонента загрузки во время выполнения запроса */}
+      {loading && <Loader />}
       {reviews.length !== 0 && (
         <div>
           <ul>

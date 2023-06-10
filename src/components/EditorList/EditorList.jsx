@@ -9,7 +9,6 @@ const EditorList = ({ films }) => {
       {films &&
         films.map(film => (
           <li key={film.id}>
-            {/* Создание ссылки с передачей параметров источника обьекта from */}
             <Link to={`/movies/${film.id}`} state={{ from: location }}>
               {film.title}
             </Link>

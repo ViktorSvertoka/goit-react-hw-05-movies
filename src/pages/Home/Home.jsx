@@ -25,10 +25,9 @@ const HomePage = () => {
   return (
     <main>
       <h1>Trending today</h1>
-      {films && <EditorList films={films} />}{' '}
-      {/* Отображение списка фильмов с помощью компонента EditorList */}
-      {loading && <Loader />}{' '}
-      {/* Отображение компонента загрузки во время выполнения запроса */}
+      {films && <EditorList films={films} />}
+
+      {loading && <Loader />}
     </main>
   );
 };

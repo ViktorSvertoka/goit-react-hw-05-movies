@@ -60,16 +60,14 @@ const MovieDetailsPage = () => {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>{' '}
-            {/* Ссылка на страницу с информацией о актерах */}
+            <Link to="cast">Cast</Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>{' '}
-            {/* Ссылка на страницу с отзывами */}
+            <Link to="reviews">Reviews</Link>
           </li>
         </ul>
         <hr />
-        <Outlet /> {/* Отображение вложенного маршрута */}
+        <Outlet />
       </div>
     </>
   );
