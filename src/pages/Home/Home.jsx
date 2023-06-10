@@ -8,17 +8,21 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
 
   useEffect(() => {
-    const fetchTrendingFilms = async () => {
+    const fetchTrendingFilms = () => {
       setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
-      try {
-        const trendingFilms = await fetchTrending(); // Выполняем запрос на получение популярных фильмов с использованием API-сервиса
-        setFilms(trendingFilms); // Устанавливаем полученные фильмы в состояние
-      } catch (error) {
-        console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
-      } finally {
-        setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
-      }
+
+      fetchTrending()
+        .then(trendingFilms => {
+          setFilms(trendingFilms); // Устанавливаем полученные фильмы в состояние
+        })
+        .catch(error => {
+          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+        })
+        .finally(() => {
+          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+        });
     };
+
     fetchTrendingFilms(); // Вызываем функцию получения популярных фильмов при монтировании компонента (пустой массив зависимостей)
   }, []);
 

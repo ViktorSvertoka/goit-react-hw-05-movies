@@ -10,13 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  padding: 20px 0;
   border-bottom: solid 1px grey;
-
-  > nav {
-    display: flex;
-    gap: 20px;
-  }
 `;
 
 export const Link = styled(NavLink)`

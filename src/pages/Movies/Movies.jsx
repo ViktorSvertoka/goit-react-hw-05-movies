@@ -18,22 +18,26 @@ const MoviesPage = () => {
 
   useEffect(() => {
     if (queryMovie) {
-      const searchMovies = async () => {
+      const searchMovies = () => {
         setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
-        try {
-          const searchResults = await fetchSearchByKeyword(queryMovie); // Выполняем запрос на поиск фильмов по ключевому слову с использованием API-сервиса
-          setSearchFilms(searchResults); // Устанавливаем полученные результаты поиска в состояние
-          if (searchResults.length === 0) {
-            setNoMoviesText(true);
-          } else {
-            setNoMoviesText(false);
-          }
-        } catch (error) {
-          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
-        } finally {
-          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
-        }
+
+        fetchSearchByKeyword(queryMovie)
+          .then(searchResults => {
+            setSearchFilms(searchResults); // Устанавливаем полученные результаты поиска в состояние
+            if (searchResults.length === 0) {
+              setNoMoviesText(true);
+            } else {
+              setNoMoviesText(false);
+            }
+          })
+          .catch(error => {
+            console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+          })
+          .finally(() => {
+            setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+          });
       };
+
       searchMovies(); // Вызываем функцию поиска фильмов при каждом изменении параметра 'query'
     }
   }, [queryMovie]);

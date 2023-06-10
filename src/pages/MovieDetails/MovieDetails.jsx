@@ -11,17 +11,21 @@ const MovieDetailsPage = () => {
   const location = useLocation(); // Получение текущего местоположения (URL)
 
   useEffect(() => {
-    const fetchMovieDetailsFilms = async () => {
+    const fetchMovieDetailsFilms = () => {
       setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
-      try {
-        const detailMovie = await fetchMovieDetails(movieId); // Выполняем запрос на получение подробной информации о фильме с использованием API-сервиса
-        setMovieInfo(detailMovie); // Устанавливаем полученную информацию о фильме в состояние
-      } catch (error) {
-        console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
-      } finally {
-        setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
-      }
+
+      fetchMovieDetails(movieId)
+        .then(detailMovie => {
+          setMovieInfo(detailMovie); // Устанавливаем полученную информацию о фильме в состояние
+        })
+        .catch(error => {
+          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+        })
+        .finally(() => {
+          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+        });
     };
+
     fetchMovieDetailsFilms(); // Вызываем функцию получения информации о фильме при каждом изменении параметра movieId
   }, [movieId]);
 
