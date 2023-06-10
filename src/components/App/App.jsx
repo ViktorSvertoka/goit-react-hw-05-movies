@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Loader from './../Loader/Loader';
 import { Container, Link } from './App.styled';
 
 // Ленивая загрузка компонентов
@@ -20,14 +21,15 @@ const App = () => {
           <Link to="/movies">Movies</Link>
           <hr />
         </nav>
-        <Suspense fallback="loading">
+        <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route index path="/" element={<Home />} />
 
             <Route path="/movies" element={<Movies />} />
 
             <Route path="/movies/:movieId" element={<MovieDetails />}>
               <Route path="/movies/:movieId/cast" element={<Cast />} />
+
               <Route path="/movies/:movieId/reviews" element={<Reviews />} />
             </Route>
 

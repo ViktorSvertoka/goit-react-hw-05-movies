@@ -30,8 +30,8 @@ const MovieDetailsPage = () => {
       <Link to={location?.state?.from ?? '/movies'}>
         <button type="button">Go back</button>
       </Link>
-      {loading && <Loader />}{' '}
-      {/* Отображение компонента загрузки во время выполнения запроса */}
+      {loading && <Loader />}
+
       {movieInfo && (
         <Container>
           <img
