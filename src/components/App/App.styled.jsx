@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   max-width: 1170px;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding-right: 15px;
 `;
 
-export const Link = styled(NavLink)`
+export const NavLink = styled(Link)`
   display: inline-block;
   text-decoration: none;
   padding: 14px;

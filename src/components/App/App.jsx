@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes, Outlet } from 'react-router-dom';
 import Loader from './../Loader/Loader';
-import { Container, Link } from './App.styled';
+import { Container, NavLink } from './App.styled';
 
 // Ленивая загрузка компонентов
 const Home = lazy(() => import('./../../pages/Home/Home')); // Компонент для домашней страницы
@@ -17,8 +17,8 @@ const App = () => {
     <Container>
       <header>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/movies">Movies</NavLink>
           <hr />
         </nav>
       </header>
