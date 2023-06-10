@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { fetchMovieDetails } from '..//../services/TmbdApi';
-import Loader from '..//../components/Loader/Loader';
+import { fetchMovieDetails } from 'services/TmbdApi';
+import Loader from 'components/Loader/Loader';
 import { Container, List } from './MovieDetails.styled';
 
 const MovieDetailsPage = () => {

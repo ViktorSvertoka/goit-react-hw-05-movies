@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchActors } from '..//../services/TmbdApi';
-import Loader from '../Loader/Loader';
+import { fetchActors } from 'services/TmbdApi';
+import Loader from 'components/Loader/Loader';
 
 const Cast = () => {
   const { movieId } = useParams(); // Получение параметра movieId из URL
