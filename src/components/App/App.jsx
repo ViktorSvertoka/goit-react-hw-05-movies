@@ -1,7 +1,6 @@
-import { lazy, Suspense } from 'react';
-import { Route, Routes, Outlet } from 'react-router-dom';
-import Loader from './../Loader/Loader';
-import { Container, NavLink } from './App.styled';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './../Layout/Layout';
 
 // Ленивая загрузка компонентов
 const Home = lazy(() => import('./../../pages/Home/Home')); // Компонент для домашней страницы
@@ -14,31 +13,20 @@ const Reviews = lazy(() => import('./../Reviews/Reviews')); // Компонен�
 
 const App = () => {
   return (
-    <Container>
-      <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-          <hr />
-        </nav>
-      </header>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
 
-          <Route path="/movies" element={<Movies />} />
+        <Route path="/movies" element={<Movies />} />
 
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          <Route path="/movies/:movieId/cast" element={<Cast />} />
+          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+        </Route>
 
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-
-          <Route path="*" element={<Home />} />
-        </Routes>
-        <Outlet />
-      </Suspense>
-    </Container>
+        <Route path="*" element={<Home />} />
+      </Route>
+    </Routes>
   );
 };
 
