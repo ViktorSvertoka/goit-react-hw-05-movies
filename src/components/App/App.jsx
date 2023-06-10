@@ -14,8 +14,8 @@ const Reviews = lazy(() => import('./../Reviews/Reviews')); // Компонен�
 
 const App = () => {
   return (
-    <>
-      <Container>
+    <Container>
+      <header>
         <nav>
           <Link to="/" end>
             Home
@@ -25,23 +25,23 @@ const App = () => {
           </Link>
           <hr />
         </nav>
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route index path="/" element={<Home />} />
+      </header>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route index path="/" element={<Home />} />
 
-            <Route path="/movies" element={<Movies />} />
+          <Route path="/movies" element={<Movies />} />
 
-            <Route path="/movies/:movieId" element={<MovieDetails />}>
-              <Route path="/movies/:movieId/cast" element={<Cast />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="/movies/:movieId/cast" element={<Cast />} />
 
-              <Route path="/movies/:movieId/reviews" element={<Reviews />} />
-            </Route>
+            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+          </Route>
 
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </Suspense>
-      </Container>
-    </>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 };
 
