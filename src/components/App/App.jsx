@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Route, Routes, Outlet } from 'react-router-dom';
 import Loader from './../Loader/Loader';
 import { Container, Link } from './App.styled';
 
@@ -16,23 +15,16 @@ const Reviews = lazy(() => import('./../Reviews/Reviews')); // Компонен�
 const App = () => {
   return (
     <Container>
-      <Helmet>
-        <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
-      </Helmet>
       <header>
         <nav>
-          <Link to="/" end>
-            Home
-          </Link>
-          <Link to="/movies" end>
-            Movies
-          </Link>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
           <hr />
         </nav>
       </header>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route index path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/movies" element={<Movies />} />
 
@@ -44,6 +36,7 @@ const App = () => {
 
           <Route path="*" element={<Home />} />
         </Routes>
+        <Outlet />
       </Suspense>
     </Container>
   );
