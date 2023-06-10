@@ -1,6 +1,6 @@
-import { lazy } from 'react';
-import { Route, Routes, NavLink as NewNavLink } from 'react-router-dom';
-import { Container, StyledNavLink } from './App.styled';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Container, Link } from './App.styled';
 
 // Ленивая загрузка компонентов
 const Home = lazy(() => import('./../../pages/Home/Home')); // Компонент для домашней страницы
@@ -16,37 +16,33 @@ const App = () => {
     <Container>
       <nav>
         {/* Навигационные ссылки */}
-        <StyledNavLink as={NewNavLink} to="/">
+        <Link to="/" end>
           Home
-        </StyledNavLink>
-
-        <StyledNavLink as={NewNavLink} to="/movies">
-          Movies
-        </StyledNavLink>
-
+        </Link>
+        <Link to="/movies">Movies</Link>
         <hr />
       </nav>
-      {/* <Suspense fallback="loading"> */}
-      <Routes>
-        {/* Маршрут для домашней страницы */}
-        <Route index path="/" element={<Home />} />
+      <Suspense fallback="loading">
+        <Routes>
+          {/* Маршрут для домашней страницы */}
+          <Route index path="/" element={<Home />} />
 
-        {/* Маршрут для страницы с фильмами */}
-        <Route path="/movies" element={<Movies />} />
+          {/* Маршрут для страницы с фильмами */}
+          <Route path="/movies" element={<Movies />} />
 
-        {/* Маршрут для страницы с подробной информацией о фильме */}
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          {/* Вложенные маршруты для страницы с подробной информацией о фильме */}
-          <Route path="cast" element={<Cast />} />{' '}
-          {/* Маршрут для страницы с актерским составом фильма */}
-          <Route path="reviews" element={<Reviews />} />{' '}
-          {/* Маршрут для страницы с обзорами фильма */}
-        </Route>
+          {/* Маршрут для страницы с подробной информацией о фильме */}
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            {/* Вложенные маршруты для страницы с подробной информацией о фильме */}
+            <Route path="/movies/:movieId/cast" element={<Cast />} />
+            {/* Маршрут для страницы с актерским составом фильма */}
+            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+            {/* Маршрут для страницы с обзорами фильма */}
+          </Route>
 
-        {/* Маршрут для перенаправления на домашнюю страницу в случае неправильного адреса */}
-        <Route path="*" element={<Home to="/" />} />
-      </Routes>
-      {/* </Suspense> */}
+          {/* Маршрут для перенаправления на домашнюю страницу в случае неправильного адреса */}
+          <Route path="*" element={<Home to="/" />} />
+        </Routes>
+      </Suspense>
     </Container>
   );
 };
