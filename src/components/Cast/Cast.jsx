@@ -26,7 +26,7 @@ const Cast = () => {
   return (
     <div>
       {loading && <Loader />}
-      {/* Отображение компонента Loader во время загрузки */}
+
       <ul>
         {actors.map(({ id, profile_path, original_name, name, character }) => (
           <li key={id}>
@@ -34,13 +34,13 @@ const Cast = () => {
               width="200px"
               src={
                 profile_path
-                  ? `https://image.tmdb.org/t/p/w500${profile_path}` // Если у актера есть изображение, используем его URL
-                  : `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg` // Если у актера нет изображения, используем заглушку
+                  ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                  : `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
               }
               alt={original_name}
             />
-            <p>{name}</p> {/* Отображение имени актера */}
-            <p>Character: {character}</p> {/* Отображение роли актера */}
+            <p>{name}</p>
+            <p>Character: {character}</p>
           </li>
         ))}
       </ul>
