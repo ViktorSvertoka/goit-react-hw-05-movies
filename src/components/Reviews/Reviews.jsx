@@ -9,17 +9,21 @@ const Reviews = () => {
   const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
 
   useEffect(() => {
-    const fetchReviewsFilms = async () => {
+    const fetchReviewsFilms = () => {
       setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
-      try {
-        const reviews = await fetchReviews(movieId); // Выполняем запрос на получение отзывов с использованием API-сервиса
-        setReviews(reviews); // Устанавливаем полученные отзывы в состояние
-      } catch (error) {
-        console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
-      } finally {
-        setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
-      }
+
+      fetchReviews(movieId)
+        .then(reviews => {
+          setReviews(reviews); // Устанавливаем полученные отзывы в состояние
+        })
+        .catch(error => {
+          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+        })
+        .finally(() => {
+          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+        });
     };
+
     fetchReviewsFilms(); // Вызываем функцию получения отзывов при каждом изменении параметра movieId
   }, [movieId]);
 

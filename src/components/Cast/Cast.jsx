@@ -9,17 +9,21 @@ const Cast = () => {
   const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
 
   useEffect(() => {
-    const onActorsOfMovie = async () => {
+    const onActorsOfMovie = () => {
       setLoading(true); // Устанавливаем флаг загрузки в true
-      try {
-        const actors = await fetchActors(movieId); // Выполняем запрос к API для получения актеров фильма
-        setActors(actors); // Обновляем состояние актеров с полученными данными
-      } catch (error) {
-        console.log(error); // Обрабатываем ошибку, если произошла
-      } finally {
-        setLoading(false); // Устанавливаем флаг загрузки в false после выполнения запроса
-      }
+
+      fetchActors(movieId)
+        .then(actors => {
+          setActors(actors); // Обновляем состояние актеров с полученными данными
+        })
+        .catch(error => {
+          console.log(error); // Обрабатываем ошибку, если произошла
+        })
+        .finally(() => {
+          setLoading(false); // Устанавливаем флаг загрузки в false после выполнения запроса
+        });
     };
+
     onActorsOfMovie(); // Вызываем функцию для получения актеров фильма
   }, [movieId]);
 
