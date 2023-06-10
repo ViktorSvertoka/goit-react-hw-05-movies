@@ -4,27 +4,27 @@ import { fetchActors } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
 
 const Cast = () => {
-  const { movieId } = useParams(); // Получение параметра movieId из URL
-  const [actors, setActors] = useState([]); // Состояние для хранения списка актеров
-  const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
+  const { movieId } = useParams();
+  const [actors, setActors] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const onActorsOfMovie = () => {
-      setLoading(true); // Устанавливаем флаг загрузки в true
+      setLoading(true);
 
       fetchActors(movieId)
         .then(actors => {
-          setActors(actors); // Обновляем состояние актеров с полученными данными
+          setActors(actors);
         })
         .catch(error => {
-          console.log(error); // Обрабатываем ошибку, если произошла
+          console.log(error);
         })
         .finally(() => {
-          setLoading(false); // Устанавливаем флаг загрузки в false после выполнения запроса
+          setLoading(false);
         });
     };
 
-    onActorsOfMovie(); // Вызываем функцию для получения актеров фильма
+    onActorsOfMovie();
   }, [movieId]);
 
   return (

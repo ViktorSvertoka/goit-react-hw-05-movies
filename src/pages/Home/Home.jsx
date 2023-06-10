@@ -4,26 +4,26 @@ import { fetchTrending } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
 
 const HomePage = () => {
-  const [films, setFilms] = useState([]); // Состояние для хранения списка фильмов
-  const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
+  const [films, setFilms] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchTrendingFilms = () => {
-      setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
+      setLoading(true);
 
       fetchTrending()
         .then(trendingFilms => {
-          setFilms(trendingFilms); // Устанавливаем полученные фильмы в состояние
+          setFilms(trendingFilms);
         })
         .catch(error => {
-          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+          console.log(error);
         })
         .finally(() => {
-          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+          setLoading(false);
         });
     };
 
-    fetchTrendingFilms(); // Вызываем функцию получения популярных фильмов при монтировании компонента (пустой массив зависимостей)
+    fetchTrendingFilms();
   }, []);
 
   return (

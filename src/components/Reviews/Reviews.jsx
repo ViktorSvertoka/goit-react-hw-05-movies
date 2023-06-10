@@ -4,27 +4,27 @@ import { fetchReviews } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
-  const { movieId } = useParams(); // Получение параметра movieId из URL с помощью хука useParams
-  const [reviews, setReviews] = useState([]); // Состояние для хранения отзывов
-  const [loading, setLoading] = useState(false); // Состояние для отображения состояния загрузки
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchReviewsFilms = () => {
-      setLoading(true); // Устанавливаем состояние загрузки в true перед запросом
+      setLoading(true);
 
       fetchReviews(movieId)
         .then(reviews => {
-          setReviews(reviews); // Устанавливаем полученные отзывы в состояние
+          setReviews(reviews);
         })
         .catch(error => {
-          console.log(error); // Обрабатываем возможные ошибки и выводим их в консоль
+          console.log(error);
         })
         .finally(() => {
-          setLoading(false); // Устанавливаем состояние загрузки в false после завершения запроса
+          setLoading(false);
         });
     };
 
-    fetchReviewsFilms(); // Вызываем функцию получения отзывов при каждом изменении параметра movieId
+    fetchReviewsFilms();
   }, [movieId]);
 
   return (
