@@ -4,7 +4,7 @@ import { fetchMovieDetails } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
 import { Container, List } from './MovieDetails.styled';
 
-const MovieDetailsPage = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieInfo, setMovieInfo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -91,4 +91,4 @@ const MovieDetailsPage = () => {
   );
 };
 
-export default MovieDetailsPage;
+export default MovieDetails;

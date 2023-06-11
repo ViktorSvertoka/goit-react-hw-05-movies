@@ -3,7 +3,7 @@ import EditorList from 'components/EditorList/EditorList';
 import { fetchTrending } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
 
-const HomePage = () => {
+const Home = () => {
   const [films, setFilms] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -36,4 +36,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
