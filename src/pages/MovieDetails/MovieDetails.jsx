@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
-import { Container, List } from './MovieDetails.styled';
+import { Container, List, ListInfo, LinkInfo } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -80,14 +80,14 @@ const MovieDetails = () => {
       <hr />
       <div>
         <h3>Additional information</h3>
-        <ul>
+        <ListInfo>
           <li>
-            <Link to="cast">Cast</Link>
+            <LinkInfo to="cast">Cast</LinkInfo>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <LinkInfo to="reviews">Reviews</LinkInfo>
           </li>
-        </ul>
+        </ListInfo>
         <hr />
         <Outlet />
       </div>
