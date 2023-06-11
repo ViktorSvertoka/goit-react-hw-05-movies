@@ -17,7 +17,7 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    if (!queryMovie) {
+    if (queryMovie) {
       const searchMovies = () => {
         setLoading(true);
 
