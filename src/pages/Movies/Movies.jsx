@@ -4,7 +4,7 @@ import { fetchSearchByKeyword } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
 import EditorList from 'components/EditorList/EditorList';
 
-const MoviesPage = () => {
+const Movies = () => {
   const [searchFilms, setSearchFilms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -60,4 +60,4 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+export default Movies;
