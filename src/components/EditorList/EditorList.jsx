@@ -6,14 +6,13 @@ const EditorList = ({ films }) => {
 
   return (
     <ul>
-      {films &&
-        films.map(film => (
-          <li key={film.id}>
-            <Link to={`/movies/${film.id}`} state={{ from: location }}>
-              {film.title}
-            </Link>
-          </li>
-        ))}
+      {films.map(film => (
+        <li key={film.id}>
+          <Link to={`/movies/${film.id}`} state={{ from: location }}>
+            {film.title}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };
