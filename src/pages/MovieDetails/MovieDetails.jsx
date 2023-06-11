@@ -29,6 +29,10 @@ const MovieDetails = () => {
     fetchMovieDetailsFilms();
   }, [movieId]);
 
+  if (!movieInfo) {
+    return;
+  }
+
   const {
     title,
     release_date,
