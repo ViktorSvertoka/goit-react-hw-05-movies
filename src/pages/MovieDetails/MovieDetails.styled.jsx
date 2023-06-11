@@ -36,3 +36,20 @@ export const LinkInfo = styled(Link)`
     color: tomato;
   }
 `;
+
+export const Button = styled.button`
+  padding: 8px 8px;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 3px solid #191d1e;
+  color: #191d1e;
+  font-weight: 600;
+  font-size: 20px;
+  border-radius: 4px 8px;
+
+  &:hover {
+    color: tomato;
+    border: 3px solid tomato;
+  }
+`;

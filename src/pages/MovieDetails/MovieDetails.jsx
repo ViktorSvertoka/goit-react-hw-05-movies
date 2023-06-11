@@ -2,7 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/TmbdApi';
 import Loader from 'components/Loader/Loader';
-import { Container, List, ListInfo, LinkInfo } from './MovieDetails.styled';
+import {
+  Container,
+  List,
+  ListInfo,
+  LinkInfo,
+  Button,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -46,7 +52,7 @@ const MovieDetails = () => {
   return (
     <>
       <Link to={location.state?.from ?? '/'}>
-        <button type="button">Go back</button>
+        <Button type="button">Go back</Button>
       </Link>
       {loading && <Loader />}
 
