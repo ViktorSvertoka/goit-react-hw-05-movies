@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { SearchForm, Input, Button } from './Form.styled';
 
 const Form = ({ searchMovies }) => {
   const [query, setQuery] = useState('');
@@ -14,16 +15,16 @@ const Form = ({ searchMovies }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <SearchForm onSubmit={handleSubmit}>
+      <Input
         type="text"
         name="query"
         autoFocus
         value={query}
         onChange={handleInputChange}
       />
-      <button type="submit">Search</button>
-    </form>
+      <Button type="submit">Search</Button>
+    </SearchForm>
   );
 };
 
@@ -32,27 +33,3 @@ Form.propTypes = {
 };
 
 export default Form;
-
-// import { useSearchParams } from 'react-router-dom';
-
-// const Form = () => {
-//   const [searchParams, setSearchParams] = useSearchParams({});
-//   //   const queryMovie = searchParams.get('query');
-
-//   const handleSubmit = event => {
-//     event.preventDefault();
-//     setSearchParams({
-//       query: event.target.elements.query.value.toLowerCase(),
-//     });
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" name="query" autoFocus />
-
-//       <button type="submit">Search</button>
-//     </form>
-//   );
-// };
-
-// export default Form;
