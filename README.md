@@ -92,3 +92,9 @@ import PropTypes from 'prop-types'
 npm i react-loader-spinner
 
 import { BallTriangle } from 'react-loader-spinner'
+
+---
+
+npm i react-router-dom
+
+import { useParams } from 'react-router-dom';
