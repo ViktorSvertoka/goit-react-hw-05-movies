@@ -1,19 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { List, Item, MovieLink } from './EditorList.styled';
 
 const EditorList = ({ films }) => {
   const location = useLocation();
 
   return (
-    <ul>
+    <List>
       {films.map(film => (
-        <li key={film.id}>
-          <Link to={`/movies/${film.id}`} state={{ from: location }}>
+        <Item key={film.id}>
+          <MovieLink to={`/movies/${film.id}`} state={{ from: location }}>
             {film.title}
-          </Link>
-        </li>
+          </MovieLink>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 };
 
