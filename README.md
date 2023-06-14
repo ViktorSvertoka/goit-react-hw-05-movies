@@ -98,3 +98,9 @@ import { BallTriangle } from 'react-loader-spinner'
 npm i react-router-dom
 
 import { useParams } from 'react-router-dom';
+
+---
+
+npm i react-router-dom@6.13.0-pre.1
+
+for -> import { lazy } from 'react';
